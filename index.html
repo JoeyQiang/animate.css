@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>animate.css</title>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        margin: 10em 0;
+        text-align: center;
+      }
+
+      .wrap {
+        text-align: center;
+        -webkit-animation: hue 60s infinite linear;
+      }
+
+      .title {
+        font-size: 6em;
+        color: #f35626;
+        background-image: -webkit-linear-gradient(272deg, #f35626, #feab3a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .button {
+        border: 2px solid #f35626;
+        color: #f35626;
+        line-height: 1.375;
+        padding: 1em 2em;
+        font-weight: 700;
+        background: transparent;
+        border-radius: 4px;
+        margin: 3em auto 0;
+        cursor: pointer;
+      }
+
+      /* Animation */
+      @-webkit-keyframes hue {
+        from {
+          -webkit-filter: hue-rotate(0deg);
+        }
+
+        to {
+          -webkit-filter: hue-rotate(-360deg);
+        }
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrap">
+          <h1 class="title">Animate.css</h1>
+      </div>
+      <div class="wrap">
+        <button class="button">Animate it</button>
+      </div>
+    </div>
+  </body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+  $(function() {
+
+    var animationName = 'animated shake',
+        animationed = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+    $('.button').on('click', function() {
+
+      $('.title').addClass(animationName).one(animationed, function() {
+        $(this).removeClass(animationName);
+      });
+
+    });
+
+  });
+</script>
